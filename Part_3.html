@@ -1,0 +1,68 @@
+<!-- HTML, CSS and Javascript Coursera Course-->
+<!-- Assignment 3 - Part 3-->
+<!-- David M. Gudeman-->
+<!-- February 18, 2016-->
+
+<!doctype html>
+    <html>
+        <head>
+            <style>
+                img {
+                    position: absolute;
+                }
+
+                div {
+                    position: absolute;
+                    width: 500px;
+                    height: 500px;
+                }
+
+                #rightSide {
+                    left: 500px;
+                    border-left: 1px solid black;
+                }
+            </style>
+            <script>
+                var numberOfFaces = 5, count = 0;
+                var leftSide = document.getElementById("leftSide");
+
+                function generateFaces() {
+                    while (count < numberOfFaces) {
+                        var newFace = document.createElement("img");
+
+                        newFace.src = "./smile.png";
+                        console.log(newFace);
+                        var random_top = Math.random() * 400;
+                        console.log(random_top);
+                        random_top = Math.floor(random_top);
+                        var random_left = Math.random() * 400;
+                        random_left = Math.floor(random_left);
+
+                        newFace.style.top = random_top + "px";
+                        newFace.style.left = random_left + "px";
+
+                        document.getElementById("leftSide").appendChild(newFace);
+
+                        count++;
+                    }
+                    var leftSideImages = document.getElementById("leftSide").cloneNode(true);
+                    var  item = leftSideImages.lastElementChild;
+                    var removedLastNode = leftSideImages.removeChild(item);
+                    document.getElementById("rightSide").appendChild(leftSideImages);
+                }
+
+            </script>
+        </head>
+        <body onload ="generateFaces()">
+            <H3>Matching Game</H3>
+            <p>
+                Click on the extra smiling face on the left
+            </p>
+            <div id="leftSide">
+
+            </div>
+            <div id="rightSide">
+
+            </div>
+        </body>
+    </html>
