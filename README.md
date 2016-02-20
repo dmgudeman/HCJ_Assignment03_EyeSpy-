@@ -1,8 +1,8 @@
-#Coursera Cours on HTML, CSS and Javascript
-##Assignment03 - EyeSpy - an extra happy face - Game
+#Coursera Course on HTML, CSS and Javascript
+##Assignment 3: EyeSpy - an extra happy face - Game
 
-This is a game that generates 5 happy faces in the right pane and one less on
-the left pane. If you click the extra happy face on the left it adds 5 more
+This is a game that generates 5 happy faces in the left pane and one less on
+the right pane. If you click the extra happy face on the left it adds 5 more
 happy faces - with one less on the right pane. If you push anywhere else but the
 extra happy face the game ends and the board is cleared.
 The game starts:
