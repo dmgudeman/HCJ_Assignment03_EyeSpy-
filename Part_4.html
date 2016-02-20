@@ -1,0 +1,105 @@
+<!-- HTML, CSS and Javascript Coursera Course-->
+<!-- Assignment 3 - Part 4-->
+<!-- David M. Gudeman-->
+<!-- February 18, 2016-->
+
+<!doctype html>
+    <html>
+        <head>
+            <style>
+                img {
+                    position: absolute;
+                }
+
+                div {
+                    position: absolute;
+                    width: 500px;
+                    height: 500px;
+                }
+
+                #rightSide {
+                    left: 500px;
+                    border-left: 1px solid black;
+                }
+            </style>
+            <script>
+                var numberOfFaces = 5;
+
+                parent._alert = new parent.Function("alert(arguments[0]);");
+                parent._alert('Test!');
+
+
+                function generateFaces() {
+                   // deleteNodes();
+                    parent._alert = new parent.Function("alert(arguments[0]);");
+                    parent._alert('Test!');
+
+                    var theLeftSide = document.getElementById("leftSide");
+                    deleteNodes();
+                    var count = 0;
+
+                    while (count < numberOfFaces) {
+                        var newFace = document.createElement("img");
+
+                        newFace.src = "./smile.png";
+                        console.log(newFace);
+                        var random_top = Math.random() * 400;
+                        console.log(random_top);
+                        random_top = Math.floor(random_top);
+                        var random_left = Math.random() * 400;
+                        random_left = Math.floor(random_left);
+
+                        newFace.style.top = random_top + "px";
+                        newFace.style.left = random_left + "px";
+
+                        theLeftSide.appendChild(newFace);
+
+                        count++;
+                    }
+                    var leftSideImages = document.getElementById("leftSide").cloneNode(true);
+                    var  item = leftSideImages.lastElementChild;
+                    var theBody = document.getElementsByTagName("body")[0];
+
+                    leftSideImages.removeChild(item);
+                    document.getElementById("rightSide").appendChild(leftSideImages);
+
+
+                    theLeftSide.lastChild.onclick = function nextLevel(event) {
+                        event.stopPropagation();
+                        numberOfFaces += 5;
+                        alert("count = " + count +"  numberOfFaces = " + numberOfFaces);
+                        generateFaces();
+                    };
+                    theBody.onclick= function() {
+                        alert("Game Over!");
+                        theBody.onclick = null;
+                        theLeftSide.lastChild.onclick = null;
+                        deleteNodes();
+                    };
+
+                    function deleteNodes () {
+                        while (theLeftSide.firstChild) {
+                           theLeftSide.removeChild(theLeftSide.firstChild);
+                        }
+                        var theRightSide = document.getElementById("rightSide");
+                        while (theRightSide.firstChild) {
+                            theRightSide.removeChild(theRightSide.firstChild);
+                        }
+                    }
+                }
+
+            </script>
+        </head>
+        <body onload ="generateFaces()">
+            <H3>Matching Game</H3>
+            <p>
+                Click on the extra smiling face on the left
+            </p>
+            <div id="leftSide">
+
+            </div>
+            <div id="rightSide">
+
+            </div>
+        </body>
+    </html>
