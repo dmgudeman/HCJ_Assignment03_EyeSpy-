@@ -25,24 +25,18 @@
             <script>
                 var numberOfFaces = 5;
 
-                parent._alert = new parent.Function("alert(arguments[0]);");
-                parent._alert('Test!');
-
-
                 function generateFaces() {
-                   // deleteNodes();
-                    parent._alert = new parent.Function("alert(arguments[0]);");
-                    parent._alert('Test!');
 
                     var theLeftSide = document.getElementById("leftSide");
-                    deleteNodes();
+                    var theRightSide = document.getElementById("rightSide");
                     var count = 0;
+
+                    deleteNodes();
 
                     while (count < numberOfFaces) {
                         var newFace = document.createElement("img");
 
                         newFace.src = "./smile.png";
-                        console.log(newFace);
                         var random_top = Math.random() * 400;
                         console.log(random_top);
                         random_top = Math.floor(random_top);
@@ -56,12 +50,12 @@
 
                         count++;
                     }
-                    var leftSideImages = document.getElementById("leftSide").cloneNode(true);
+                    var leftSideImages = theLeftSide.cloneNode(true);
                     var  item = leftSideImages.lastElementChild;
                     var theBody = document.getElementsByTagName("body")[0];
 
                     leftSideImages.removeChild(item);
-                    document.getElementById("rightSide").appendChild(leftSideImages);
+                    theRightSide.appendChild(leftSideImages);
 
 
                     theLeftSide.lastChild.onclick = function nextLevel(event) {
@@ -75,13 +69,14 @@
                         theBody.onclick = null;
                         theLeftSide.lastChild.onclick = null;
                         deleteNodes();
+
                     };
 
                     function deleteNodes () {
                         while (theLeftSide.firstChild) {
                            theLeftSide.removeChild(theLeftSide.firstChild);
                         }
-                        var theRightSide = document.getElementById("rightSide");
+
                         while (theRightSide.firstChild) {
                             theRightSide.removeChild(theRightSide.firstChild);
                         }
@@ -93,7 +88,7 @@
         <body onload ="generateFaces()">
             <H3>Matching Game</H3>
             <p>
-                Click on the extra smiling face on the left
+                Click on the extra smiling face on the left.
             </p>
             <div id="leftSide">
 
